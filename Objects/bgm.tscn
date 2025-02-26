@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw427dila81wp"]
+
+[ext_resource type="AudioStream" uid="uid://ri630gfxns7o" path="res://Assets/Sounds/ninja-247546.mp3" id="1_h7aad"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_h7aad")
+autoplay = true
+bus = &"BGM"

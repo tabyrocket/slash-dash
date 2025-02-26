@@ -1,0 +1,154 @@
+[gd_scene load_steps=14 format=3 uid="uid://d0qnmfeh5na8l"]
+
+[ext_resource type="FontFile" uid="uid://cwku51d7w5na6" path="res://Assets/Fonts/Mleitod Personal Use Only.ttf" id="1_i80h4"]
+[ext_resource type="Script" path="res://Levels/main_menu.gd" id="1_wc4y1"]
+[ext_resource type="FontFile" uid="uid://brrrr4oiltcb" path="res://Assets/Fonts/ModernDOS9x16.ttf" id="3_1ylgc"]
+[ext_resource type="Script" path="res://Levels/start.gd" id="4_7i157"]
+[ext_resource type="Texture2D" uid="uid://d3hs03an7wh4x" path="res://Assets/Characters/Hood/frames/tile032.png" id="4_iec2w"]
+[ext_resource type="Texture2D" uid="uid://10dckunfs6jr" path="res://Assets/Characters/Hood/frames/tile033.png" id="5_gdebt"]
+[ext_resource type="Texture2D" uid="uid://tgdn0j71aanl" path="res://Assets/Characters/Hood/frames/tile034.png" id="6_yjeck"]
+[ext_resource type="Texture2D" uid="uid://beybxvelip6em" path="res://Assets/Characters/Hood/frames/tile035.png" id="7_fddpb"]
+[ext_resource type="Texture2D" uid="uid://dh0fq4el1hkwt" path="res://Assets/Characters/Hood/frames/tile036.png" id="8_eefq4"]
+[ext_resource type="Texture2D" uid="uid://4q7meriegg2t" path="res://Assets/Characters/Hood/frames/tile037.png" id="9_u86lv"]
+
+[sub_resource type="Gradient" id="Gradient_ufp8x"]
+colors = PackedColorArray(0.520269, 1.49807e-06, 3.36915e-07, 1, 0.648753, 0.403527, 0.213732, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3lxjp"]
+gradient = SubResource("Gradient_ufp8x")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_s64kw"]
+frames = 6
+speed_scale = 20.0
+frame_0/texture = ExtResource("4_iec2w")
+frame_1/texture = ExtResource("5_gdebt")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_yjeck")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("7_fddpb")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("8_eefq4")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("9_u86lv")
+frame_5/duration = 1.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_wc4y1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3lxjp")
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Main"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.5
+offset_top = 50.0
+offset_right = 119.5
+offset_bottom = 213.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.749025, 0.708188, 0.679587, 1)
+theme_override_fonts/font = ExtResource("1_i80h4")
+theme_override_font_sizes/font_size = 80
+text = "Slash 
+Dash!"
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -74.0
+offset_right = 200.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Start" type="Button" parent="Main/MenuButtons"]
+custom_minimum_size = Vector2(400, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1ylgc")
+theme_override_font_sizes/font_size = 56
+text = "Start"
+script = ExtResource("4_7i157")
+
+[node name="Fullscreen" type="Button" parent="Main/MenuButtons"]
+custom_minimum_size = Vector2(300, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1ylgc")
+theme_override_font_sizes/font_size = 56
+text = "Fullscreen"
+
+[node name="Exit" type="Button" parent="Main/MenuButtons"]
+custom_minimum_size = Vector2(300, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1ylgc")
+theme_override_font_sizes/font_size = 56
+text = "Exit"
+
+[node name="LeftSprite" type="TextureRect" parent="Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -519.115
+offset_top = -124.0
+offset_right = -479.115
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+texture = SubResource("AnimatedTexture_s64kw")
+
+[node name="LeftSprite2" type="TextureRect" parent="Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 184.0
+offset_top = -124.0
+offset_right = 224.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+texture = SubResource("AnimatedTexture_s64kw")
+flip_h = true
+
+[connection signal="pressed" from="Main/MenuButtons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Main/MenuButtons/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="Main/MenuButtons/Exit" to="." method="_on_exit_pressed"]
