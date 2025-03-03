@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cj44yn065wumo"]
+[gd_scene load_steps=45 format=3 uid="uid://cj44yn065wumo"]
 
 [ext_resource type="Script" path="res://Objects/player.gd" id="1_nwroe"]
 [ext_resource type="Texture2D" uid="uid://dy44wkgd4855s" path="res://Assets/Characters/Hood/AnimationSheet_Character.png" id="2_oo0nr"]
@@ -311,6 +311,25 @@ _data = {
 "attack": SubResource("Animation_tod0w")
 }
 
+[sub_resource type="Curve" id="Curve_x64g5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rxhdg"]
+curve = SubResource("Curve_x64g5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8cdmw"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 113.9
+initial_velocity_max = 247.31
+gravity = Vector3(0, 0, 0)
+scale_max = 11.76
+scale_curve = SubResource("CurveTexture_rxhdg")
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.72, 1.72)
 collision_mask = 0
@@ -341,7 +360,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="Timers"]
-wait_time = 0.1
+wait_time = 0.3
 one_shot = true
 
 [node name="MeleeCooldown" type="Timer" parent="Timers"]
@@ -374,6 +393,15 @@ shape = SubResource("RectangleShape2D_mf1pg")
 libraries = {
 "": SubResource("AnimationLibrary_odle5")
 }
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.701961, 0, 0, 1)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_8cdmw")
+lifetime = 0.18
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="timeout" from="Timers/DashTime" to="." method="_on_dash_time_timeout"]
 [connection signal="timeout" from="Timers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]

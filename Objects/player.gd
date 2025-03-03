@@ -19,6 +19,8 @@ extends CharacterBody2D
 @onready var hud: CanvasLayer = $"../HUD"
 @onready var end_timer: Timer = $Timers/EndTimer
 
+@onready var gpu_particles: GPUParticles2D = $GPUParticles2D
+
 enum States { Idle, Move, Dash, Death, Attack }
 var state = States.Idle
 var dash_ready = true
@@ -89,6 +91,8 @@ func attack():
 
 func dash():
 	if ready() and dash_ready and not no_move_input():
+		gpu_particles.emitting = false
+		gpu_particles.emitting = true
 		state = States.Dash
 		sprite.animation = "dash"
 		sprite.play()
